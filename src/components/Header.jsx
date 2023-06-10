@@ -1,7 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 
+import { useContext } from "react";
+import CartContetxt from "../CartContext";
+
 const Header = () => {
   const navigate = useNavigate();
+  const {items} = useContext(CartContetxt)
+
+
   return (
     <header className="navbar shadow bg-dark text-light ">
       <div className="container-fluid mx-3 ">
@@ -13,7 +19,7 @@ const Header = () => {
           onClick={() => navigate("/checkout")}
         >
           <i className="bi bi-cart4 fs-1"></i>
-          <span className="badge bg-danger ">3</span>
+          <span className="badge bg-danger ">{items.length}</span>
         </div>
       </div>
     </header>

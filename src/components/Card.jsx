@@ -1,20 +1,25 @@
-import { useState } from "react"
+import { useContext } from "react";
+import CartContetxt from "../CartContext";
 
-const Card = ({product}) => {
-    const [items, setItems] = useState(0)
+const Card = ({ product }) => {
+  const { addToCart } = useContext(CartContetxt);
   return (
-    <div className='card'>
-        <img src={product.image} />
-        <div className=" card-body">
-            <div className=" d-flex justify-content-between">
-            <h4>{product.name}</h4>
-            <p>{product.price}$</p>
-            </div>
-            <button  className="btn btn-outline-dark" >Setete Ekle</button>
-
+    <div className="card">
+      <img src={product.image} />
+      <div className=" card-body">
+        <div className=" d-flex justify-content-between">
+          <h4>{product.name}</h4>
+          <p>{product.price}$</p>
         </div>
+        <button 
+        className="btn btn-outline-dark" 
+        onClick={()=> addToCart(product)}
+        >
+          Setete Ekle
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;
