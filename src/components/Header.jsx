@@ -1,15 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 
 import { useContext } from "react";
-import CartContetxt from "../CartContext";
+import CartContext from "../CartContext";
 
 const Header = () => {
   const navigate = useNavigate();
-  const {items} = useContext(CartContetxt)
+  const {items} = useContext(CartContext)
 
 
   return (
-    <header className="navbar shadow bg-dark text-light ">
+    <header className="navbar shadow bg-dark text-light fixed-top">
       <div className="container-fluid mx-3 ">
         <Link to={"/"}>
           <h1 className="text-light">M&A</h1>

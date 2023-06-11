@@ -77,13 +77,16 @@ const products = () => {
 
 
   return (
-    <div className="container d-flex flex-wrap justify-content-between align-items-center gap-5 pt-5" >
+    <>
+      <h1 className=" text-center p-5 mt-5">Ürün Listesi</h1>
+    <div className="container d-flex flex-wrap justify-content-between align-items-center gap-5 pb-5" >
         {
             products.map((product)=> (
                 <Card product={product} key={product.id}/>
             ))
         }
     </div>
+    </>
   )
 }
 

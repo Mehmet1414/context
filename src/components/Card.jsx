@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import CartContetxt from "../CartContext";
+import CartContext from "../CartContext";
 
 const Card = ({ product }) => {
-  const { addToCart } = useContext(CartContetxt);
+  const { addToCart } = useContext(CartContext);
   return (
     <div className="card">
       <img src={product.image} />

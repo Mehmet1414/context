@@ -1,20 +1,56 @@
 import { createContext,useState } from "react";
 
-const CartContetxt = createContext();
+const CartContext = createContext();
 
 export function CartProvider({children}) {
 
   const [items, setItems] = useState([])
 
   const addToCart = (product)=>{
-
-    setItems([...items, product])
+    const foundItem = items.find((item)=> item.id=== product.id)
+    if (foundItem) {
+      foundItem.amount++
+    } else {
+      setItems([...items, {...product, amount:1}])
+    }
   }
+  const increaseAmount = (itemId) => {
+    setItems((prevItems) =>
+      prevItems.map((item) => {
+        if (item.id === itemId) {
+          return {
+            ...item,
+            amount: item.amount + 1,
+          };
+        }
+        return item;
+      })
+    );
+  };
+
+
+  const decreaseAmount = (itemId) => {
+    setItems((prevItems) =>
+      prevItems.map((item) => {
+        if (item.id === itemId && item.amount > 1) {
+          return {
+            ...item,
+            amount: item.amount - 1,
+          };
+        }
+        return item;
+      })
+    );
+  };
+
+
+
+
   return (
-    <CartContetxt.Provider value={{ items, addToCart }}>
+    <CartContext.Provider value={{ items, addToCart,decreaseAmount,increaseAmount }}>
       {children}
-    </CartContetxt.Provider>
+    </CartContext.Provider>
   );
 }
 
-export default CartContetxt;
+export default CartContext;
