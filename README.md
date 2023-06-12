@@ -6,4 +6,4 @@
 - Bootstrap
 kullnanilarak proje gelistirildi...
 
-<img src="../public/context.gif"> </img>
+<img src="./public/context.gif"> </img>
